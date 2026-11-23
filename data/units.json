@@ -1,0 +1,818 @@
+{
+  "generatedFrom": "data/units/*.md (verify/ 검수 통과본)",
+  "units": [
+    {
+      "unit": 7,
+      "title": "I Went to a Watermelon Festival",
+      "topic": "과거에 한 일, 안부",
+      "source": "5학년 영어 지도서 7단원 (지도서 362~409쪽, 교과서 93~106쪽)",
+      "functions": [
+        {
+          "label": "과거에 한 일 묻고 답하기",
+          "q": "What did you do this summer?",
+          "a": [
+            "I swam in the sea."
+          ],
+          "level": "basic"
+        },
+        {
+          "label": "안부 묻고 답하기",
+          "q": "How was your weekend?",
+          "a": [
+            "It was good.",
+            "It was great."
+          ],
+          "level": "basic"
+        }
+      ],
+      "forms": [
+        {
+          "en": "I went to a festival.",
+          "level": "core"
+        },
+        {
+          "en": "We had a great time.",
+          "level": "core"
+        }
+      ],
+      "words": [
+        {
+          "en": "chocolate",
+          "ko": "초콜릿",
+          "level": "basic"
+        },
+        {
+          "en": "family",
+          "ko": "가족",
+          "level": "basic"
+        },
+        {
+          "en": "festival",
+          "ko": "축제",
+          "level": "basic"
+        },
+        {
+          "en": "grape",
+          "ko": "포도",
+          "level": "basic"
+        },
+        {
+          "en": "last",
+          "ko": "지난",
+          "level": "basic"
+        },
+        {
+          "en": "pick",
+          "ko": "따다",
+          "level": "basic"
+        },
+        {
+          "en": "sea",
+          "ko": "바다",
+          "level": "basic"
+        },
+        {
+          "en": "watermelon",
+          "ko": "수박",
+          "level": "basic"
+        },
+        {
+          "en": "weekend",
+          "ko": "주말",
+          "level": "basic"
+        },
+        {
+          "en": "year",
+          "ko": "해, 년",
+          "level": "basic"
+        },
+        {
+          "en": "yesterday",
+          "ko": "어제",
+          "level": "basic"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "picked watermelons",
+          "ko": "수박을 땄다",
+          "level": "basic",
+          "base": "pick",
+          "past": "picked"
+        },
+        {
+          "en": "played basketball",
+          "ko": "농구를 했다",
+          "level": "basic",
+          "base": "play",
+          "past": "played"
+        },
+        {
+          "en": "visited my grandma",
+          "ko": "할머니 댁을 방문했다",
+          "level": "basic",
+          "base": "visit",
+          "past": "visited"
+        },
+        {
+          "en": "made chocolate cookies",
+          "ko": "초콜릿쿠키를 만들었다",
+          "level": "basic",
+          "base": "make",
+          "past": "made"
+        },
+        {
+          "en": "swam in the sea",
+          "ko": "바다에서 수영했다",
+          "level": "basic",
+          "base": "swim",
+          "past": "swam"
+        },
+        {
+          "en": "went to a festival",
+          "ko": "축제에 갔다",
+          "level": "basic",
+          "base": "go",
+          "past": "went"
+        }
+      ],
+      "practice": [
+        {
+          "q": "What did you do this summer?",
+          "a": "I went to a festival.",
+          "level": "core"
+        },
+        {
+          "q": "What did you do this summer?",
+          "a": "I picked watermelons.",
+          "level": "core"
+        },
+        {
+          "q": "What did you do this summer?",
+          "a": "I swam in the sea.",
+          "level": "core"
+        },
+        {
+          "q": "What did you do this summer?",
+          "a": "I visited my grandma.",
+          "level": "core"
+        },
+        {
+          "q": "What did you do this summer?",
+          "a": "I made chocolate cookies.",
+          "level": "core"
+        },
+        {
+          "q": "What did you do this summer?",
+          "a": "I played basketball.",
+          "level": "core"
+        }
+      ],
+      "dialogs": [],
+      "reading": null
+    },
+    {
+      "unit": 8,
+      "title": "What Would You Like?",
+      "topic": "음식 주문, 음식 권하기",
+      "source": "5학년 영어 지도서 8단원 (지도서 410~457쪽, 교과서 107~120쪽)",
+      "functions": [
+        {
+          "label": "음식 주문하기",
+          "q": "What would you like?",
+          "a": [
+            "I'd like a fruit salad."
+          ],
+          "level": "basic"
+        },
+        {
+          "label": "음식 권하고 답하기",
+          "q": "Do you want some more?",
+          "a": [
+            "Yes, please.",
+            "No, thanks."
+          ],
+          "level": "basic"
+        }
+      ],
+      "forms": [
+        {
+          "en": "I'd like a beef steak.",
+          "level": "core"
+        },
+        {
+          "en": "It has fruit and ice in it.",
+          "level": "core"
+        }
+      ],
+      "words": [
+        {
+          "en": "all",
+          "ko": "모두, 전부",
+          "level": "basic"
+        },
+        {
+          "en": "beef",
+          "ko": "소고기",
+          "level": "basic"
+        },
+        {
+          "en": "cake",
+          "ko": "케이크",
+          "level": "basic"
+        },
+        {
+          "en": "chip",
+          "ko": "감자칩",
+          "level": "basic"
+        },
+        {
+          "en": "choose",
+          "ko": "고르다",
+          "level": "basic"
+        },
+        {
+          "en": "feel",
+          "ko": "느끼다",
+          "level": "basic"
+        },
+        {
+          "en": "fish",
+          "ko": "생선",
+          "level": "basic"
+        },
+        {
+          "en": "fruit",
+          "ko": "과일",
+          "level": "basic"
+        },
+        {
+          "en": "meat",
+          "ko": "고기",
+          "level": "basic"
+        },
+        {
+          "en": "or",
+          "ko": "또는",
+          "level": "basic"
+        },
+        {
+          "en": "sandwich",
+          "ko": "샌드위치",
+          "level": "basic"
+        },
+        {
+          "en": "sell",
+          "ko": "팔다",
+          "level": "basic"
+        },
+        {
+          "en": "spaghetti",
+          "ko": "스파게티",
+          "level": "basic"
+        },
+        {
+          "en": "steak",
+          "ko": "스테이크",
+          "level": "basic"
+        },
+        {
+          "en": "tasty",
+          "ko": "맛있는",
+          "level": "basic"
+        },
+        {
+          "en": "would",
+          "ko": "~하고 싶다(would like)",
+          "level": "basic"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "fruit salad",
+          "ko": "과일샐러드",
+          "level": "basic"
+        },
+        {
+          "en": "beef steak",
+          "ko": "비프스테이크",
+          "level": "basic"
+        },
+        {
+          "en": "carrot cake",
+          "ko": "당근케이크",
+          "level": "basic"
+        },
+        {
+          "en": "cheese pizza",
+          "ko": "치즈피자",
+          "level": "basic"
+        },
+        {
+          "en": "orange juice",
+          "ko": "오렌지주스",
+          "level": "basic"
+        },
+        {
+          "en": "tomato spaghetti",
+          "ko": "토마토스파게티",
+          "level": "basic"
+        }
+      ],
+      "practice": [
+        {
+          "q": "What would you like?",
+          "a": "I'd like a fruit salad.",
+          "level": "core"
+        },
+        {
+          "q": "What would you like?",
+          "a": "I'd like carrot cake.",
+          "level": "core"
+        },
+        {
+          "q": "What would you like?",
+          "a": "I'd like a beef steak.",
+          "level": "core"
+        },
+        {
+          "q": "What would you like?",
+          "a": "I'd like an orange juice.",
+          "level": "core"
+        },
+        {
+          "q": "What would you like?",
+          "a": "I'd like tomato spaghetti.",
+          "level": "core"
+        },
+        {
+          "q": "What would you like?",
+          "a": "I'd like a cheese pizza.",
+          "level": "core"
+        }
+      ],
+      "dialogs": [],
+      "reading": null
+    },
+    {
+      "unit": 9,
+      "title": "They Are Twenty Thousand Won",
+      "topic": "물건 가격, 원하는 색",
+      "source": "5학년 영어 지도서 9단원 (지도서 458~505쪽, 교과서 121~134쪽)",
+      "functions": [
+        {
+          "label": "물건의 가격 묻고 답하기",
+          "q": "How much are the pants?",
+          "a": [
+            "They're twenty thousand won."
+          ],
+          "level": "basic"
+        },
+        {
+          "label": "원하는 색 묻고 답하기",
+          "q": "What color do you want?",
+          "a": [
+            "I want red, please."
+          ],
+          "level": "basic"
+        }
+      ],
+      "forms": [
+        {
+          "en": "They are nice and pretty.",
+          "level": "core"
+        }
+      ],
+      "words": [
+        {
+          "en": "ahead",
+          "ko": "앞으로(Go ahead. 그러세요.)",
+          "level": "basic"
+        },
+        {
+          "en": "cheap",
+          "ko": "값이 싼",
+          "level": "basic"
+        },
+        {
+          "en": "glass",
+          "ko": "유리, 안경(glasses)",
+          "level": "basic"
+        },
+        {
+          "en": "glove",
+          "ko": "장갑",
+          "level": "basic"
+        },
+        {
+          "en": "only",
+          "ko": "단지, 겨우",
+          "level": "basic"
+        },
+        {
+          "en": "pants",
+          "ko": "바지",
+          "level": "basic"
+        },
+        {
+          "en": "ribbon",
+          "ko": "리본",
+          "level": "basic"
+        },
+        {
+          "en": "sale",
+          "ko": "할인 판매",
+          "level": "basic"
+        },
+        {
+          "en": "sock",
+          "ko": "양말",
+          "level": "basic"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "glasses",
+          "ko": "안경",
+          "level": "basic"
+        },
+        {
+          "en": "socks",
+          "ko": "양말",
+          "level": "basic"
+        },
+        {
+          "en": "gloves",
+          "ko": "장갑",
+          "level": "basic"
+        },
+        {
+          "en": "pants",
+          "ko": "바지",
+          "level": "basic"
+        },
+        {
+          "en": "shoes",
+          "ko": "신발",
+          "level": "basic"
+        }
+      ],
+      "practice": [
+        {
+          "q": "How much are the glasses?",
+          "a": "They're thirty thousand won.",
+          "level": "core"
+        },
+        {
+          "q": "How much are the gloves?",
+          "a": "They're twenty thousand won.",
+          "level": "core"
+        },
+        {
+          "q": "How much are the socks?",
+          "a": "They're ten thousand won.",
+          "level": "core"
+        },
+        {
+          "q": "How much are the pants?",
+          "a": "They're forty thousand won.",
+          "level": "core"
+        },
+        {
+          "q": "How much are the shoes?",
+          "a": "They're fifty thousand won.",
+          "level": "core"
+        }
+      ],
+      "dialogs": [],
+      "reading": null
+    },
+    {
+      "unit": 10,
+      "title": "What Time Do You Get Up?",
+      "topic": "하루 일과, 놀람",
+      "source": "5학년 영어 지도서 10단원 (지도서 506~553쪽, 교과서 135~148쪽)",
+      "functions": [
+        {
+          "label": "일과 묻고 답하기",
+          "q": "What time do you get up?",
+          "a": [
+            "I get up at 8."
+          ],
+          "level": "basic"
+        },
+        {
+          "label": "놀람 표현하기",
+          "q": "Really?",
+          "a": [],
+          "level": "basic"
+        }
+      ],
+      "forms": [
+        {
+          "en": "I get up at 7.",
+          "level": "core"
+        },
+        {
+          "en": "She gets up at 5.",
+          "level": "core"
+        }
+      ],
+      "words": [
+        {
+          "en": "bake",
+          "ko": "굽다",
+          "level": "basic"
+        },
+        {
+          "en": "early",
+          "ko": "일찍",
+          "level": "basic"
+        },
+        {
+          "en": "fresh",
+          "ko": "신선한, 갓 만든",
+          "level": "basic"
+        },
+        {
+          "en": "get",
+          "ko": "(get up) 일어나다",
+          "level": "basic"
+        },
+        {
+          "en": "home",
+          "ko": "집, 집으로",
+          "level": "basic"
+        },
+        {
+          "en": "hour",
+          "ko": "시간",
+          "level": "basic"
+        },
+        {
+          "en": "job",
+          "ko": "일, 직업",
+          "level": "basic"
+        },
+        {
+          "en": "practice",
+          "ko": "연습하다",
+          "level": "basic"
+        },
+        {
+          "en": "really",
+          "ko": "정말",
+          "level": "basic"
+        },
+        {
+          "en": "study",
+          "ko": "공부하다",
+          "level": "basic"
+        },
+        {
+          "en": "tonight",
+          "ko": "오늘 밤",
+          "level": "basic"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "get up",
+          "ko": "일어나다",
+          "level": "basic"
+        },
+        {
+          "en": "eat breakfast",
+          "ko": "아침을 먹다",
+          "level": "basic"
+        },
+        {
+          "en": "go to school",
+          "ko": "학교에 가다",
+          "level": "basic"
+        },
+        {
+          "en": "come home",
+          "ko": "집에 오다",
+          "level": "basic"
+        },
+        {
+          "en": "study English",
+          "ko": "영어를 공부하다",
+          "level": "basic"
+        },
+        {
+          "en": "go to bed",
+          "ko": "잠자리에 들다",
+          "level": "basic"
+        }
+      ],
+      "practice": [
+        {
+          "q": "What time do you get up?",
+          "a": "I get up at 7:30.",
+          "level": "core"
+        },
+        {
+          "q": "What time do you eat breakfast?",
+          "a": "I eat breakfast at 8.",
+          "level": "core"
+        },
+        {
+          "q": "What time do you go to school?",
+          "a": "I go to school at 8:30.",
+          "level": "core"
+        },
+        {
+          "q": "What time do you come home?",
+          "a": "I come home at 3.",
+          "level": "core"
+        },
+        {
+          "q": "What time do you study English?",
+          "a": "I study English at 3:30.",
+          "level": "core"
+        },
+        {
+          "q": "What time do you go to bed?",
+          "a": "I go to bed at 10.",
+          "level": "core"
+        }
+      ],
+      "dialogs": [],
+      "reading": null
+    },
+    {
+      "unit": 11,
+      "title": "My Favorite Subject Is Math",
+      "topic": "좋아하는 과목, 잘하는 것",
+      "source": "5학년 영어 지도서 11단원 (지도서 554~601쪽, 교과서 149~162쪽)",
+      "functions": [
+        {
+          "label": "좋아하는 것 묻고 답하기",
+          "q": "What's your favorite subject?",
+          "a": [
+            "My favorite subject is math."
+          ],
+          "level": "basic"
+        },
+        {
+          "label": "잘하는 것 표현하기",
+          "q": "",
+          "a": [
+            "I'm good at drawing pictures."
+          ],
+          "level": "basic"
+        }
+      ],
+      "forms": [
+        {
+          "en": "My favorite subject is science.",
+          "level": "core"
+        },
+        {
+          "en": "I'm good at making robots.",
+          "level": "core"
+        }
+      ],
+      "words": [
+        {
+          "en": "difficult",
+          "ko": "어려운",
+          "level": "basic"
+        },
+        {
+          "en": "drone",
+          "ko": "드론, 무인기",
+          "level": "basic"
+        },
+        {
+          "en": "favorite",
+          "ko": "가장 좋아하는",
+          "level": "basic"
+        },
+        {
+          "en": "food",
+          "ko": "음식",
+          "level": "basic"
+        },
+        {
+          "en": "math",
+          "ko": "수학",
+          "level": "basic"
+        },
+        {
+          "en": "speak",
+          "ko": "말하다",
+          "level": "basic"
+        },
+        {
+          "en": "subject",
+          "ko": "과목",
+          "level": "basic"
+        },
+        {
+          "en": "thing",
+          "ko": "것, 물건",
+          "level": "basic"
+        }
+      ],
+      "phrases": [
+        {
+          "en": "English",
+          "ko": "영어",
+          "level": "basic"
+        },
+        {
+          "en": "science",
+          "ko": "과학",
+          "level": "basic"
+        },
+        {
+          "en": "P.E.",
+          "ko": "체육",
+          "level": "basic"
+        },
+        {
+          "en": "music",
+          "ko": "음악",
+          "level": "basic"
+        },
+        {
+          "en": "math",
+          "ko": "수학",
+          "level": "basic"
+        },
+        {
+          "en": "art",
+          "ko": "미술",
+          "level": "basic"
+        },
+        {
+          "en": "drawing pictures",
+          "ko": "그림 그리는 것",
+          "level": "basic"
+        },
+        {
+          "en": "speaking English",
+          "ko": "영어로 말하는 것",
+          "level": "basic"
+        },
+        {
+          "en": "doing math",
+          "ko": "수학 문제 푸는 것",
+          "level": "basic"
+        },
+        {
+          "en": "making robots",
+          "ko": "로봇 만드는 것",
+          "level": "basic"
+        },
+        {
+          "en": "playing soccer",
+          "ko": "축구하기",
+          "level": "basic"
+        },
+        {
+          "en": "playing music",
+          "ko": "음악 연주하기",
+          "level": "basic"
+        }
+      ],
+      "practice": [
+        {
+          "q": "What's your favorite subject?",
+          "a": "My favorite subject is art.",
+          "level": "core"
+        },
+        {
+          "q": "What's your favorite subject?",
+          "a": "My favorite subject is English.",
+          "level": "core"
+        },
+        {
+          "q": "What's your favorite subject?",
+          "a": "My favorite subject is math.",
+          "level": "core"
+        },
+        {
+          "q": "What's your favorite subject?",
+          "a": "My favorite subject is music.",
+          "level": "core"
+        },
+        {
+          "q": "What's your favorite subject?",
+          "a": "My favorite subject is P.E.",
+          "level": "core"
+        },
+        {
+          "q": "What's your favorite subject?",
+          "a": "My favorite subject is science.",
+          "level": "core"
+        }
+      ],
+      "dialogs": [],
+      "reading": null
+    }
+  ]
+}
