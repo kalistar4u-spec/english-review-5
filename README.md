@@ -7,3 +7,12 @@
 - AI에게 시킨 말: [docs/ai-prompts.md](docs/ai-prompts.md)
 - 고치기 전/후 화면: `screenshots/`
 - 영상 코드: `video/`
+
+## 파일 구조
+
+- `index.html` 학생 화면(학급 코드+번호로 입장 → 단원 → 듣기·읽기)
+- `css/style.css` 디자인
+- `js/app.js` 화면 전환, `js/data.js` 학습 데이터, `js/speech.js` 소리·음성 인식 감지, `js/store.js` 기기 저장
+- `js/activities/` 듣기·읽기 활동과 결과 화면
+- `data/units.json` 7~11단원 핵심 표현(검수본)
+- `tools/capture.mjs` 화면 캡처·콘솔 오류 점검 (`node tools/capture.mjs tools/shots-02-student-flow.json`, 먼저 `python -m http.server 5173` 실행)

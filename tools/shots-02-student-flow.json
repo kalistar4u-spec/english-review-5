@@ -1,0 +1,32 @@
+{
+  "base": "http://127.0.0.1:5173/",
+  "out": "screenshots",
+  "shots": [
+    { "name": "02-student-flow-after", "width": 1280, "height": 800, "hash": "#/enter", "setup": ["localStorage.clear()"] },
+    { "name": "02-student-flow-after-mobile", "width": 390, "height": 844, "hash": "#/enter" },
+
+    { "name": "02-student-flow-after-units", "width": 1280, "height": 800, "hash": "#/units",
+      "setup": ["localStorage.clear(); localStorage.setItem('er5.student', JSON.stringify({classCode:'5A3K',studentNo:12}))"] },
+    { "name": "02-student-flow-after-units-mobile", "width": 390, "height": 844, "hash": "#/units" },
+
+    { "name": "02-student-flow-after-unit", "width": 1280, "height": 800, "hash": "#/unit/7", "fullPage": true },
+    { "name": "02-student-flow-after-unit-mobile", "width": 390, "height": 844, "hash": "#/unit/7", "fullPage": true },
+
+    { "name": "02-student-flow-after-listen", "width": 1280, "height": 800, "hash": "#/unit/7/listen",
+      "steps": ["new Promise(r=>setTimeout(r,1500)).then(()=>{document.querySelectorAll('.choice')[1].click(); return document.querySelector('.feedback strong').textContent})"] },
+    { "name": "02-student-flow-after-listen-mobile", "width": 390, "height": 844, "hash": "#/unit/10/listen", "fullPage": true,
+      "steps": ["new Promise(r=>setTimeout(r,1500)).then(()=>document.querySelector('.ask').textContent)"] },
+
+    { "name": "02-student-flow-after-read", "width": 1280, "height": 800, "hash": "#/unit/8/read", "fullPage": true,
+      "steps": ["(()=>{const c=document.querySelectorAll('.match .col');const L=c[0].querySelectorAll('.chip'),R=c[1].querySelectorAll('.chip');L[0].click();R[1].click();L[1].click();R[0].click();L[2].click();return 'ok'})()"] },
+    { "name": "02-student-flow-after-read-mobile", "width": 390, "height": 844, "hash": "#/unit/8/read", "fullPage": true,
+      "steps": ["(()=>{const c=document.querySelectorAll('.match .col');const L=c[0].querySelectorAll('.chip'),R=c[1].querySelectorAll('.chip');L.forEach((b,i)=>{b.click();R[i].click()});document.querySelector('.btn-row .btn:not([hidden])').click();return document.querySelector('.feedback strong').textContent})()"] },
+
+    { "name": "02-student-flow-after-result", "width": 1280, "height": 800, "hash": "#/unit/11/listen", "fullPage": true,
+      "steps": ["(async()=>{await new Promise(r=>setTimeout(r,1500));const w=()=>new Promise(r=>setTimeout(r,60));for(let i=0;i<8;i++){document.querySelectorAll('.choice')[i%3].click();await w();[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/다음 문제|결과 보기/.test(b.textContent)).click();await w();}return document.querySelector('.score').textContent})()"] },
+
+    { "name": "02-student-flow-after-nospeech", "width": 1280, "height": 800, "hash": "#/unit/9/listen",
+      "init": "delete window.speechSynthesis; Object.defineProperty(window,'speechSynthesis',{value:undefined}); window.SpeechSynthesisUtterance=undefined;",
+      "steps": ["new Promise(r=>setTimeout(r,800)).then(()=>document.querySelector('.notice').textContent.slice(0,30))"] }
+  ]
+}

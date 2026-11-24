@@ -27,3 +27,17 @@
 - 공개 저장소에서 교과서 대화문(Fun Talk 1·2, Talk Like This, Practice 2)과 읽기 글(Let's Read)을 뺌
 - 남긴 것: 의사소통 기능, 언어 형식, 신출 어휘, 단원 어구, 주요 표현 연습 → 다시 검수 189/189(100%)
 - 도전 단계는 대화문 대신 같은 핵심 표현을 힌트 없이 문장 전체로 다루도록 바꿈
+
+## 2026-11-24 — 학생 흐름의 뼈대와 듣기·읽기 활동
+
+> 첫 화면을 학생 입장 화면(학급 코드+번호)으로 바꾸고, 단원 목록 → 단원 화면 → 듣기·읽기 활동을 만들어 줘. 듣기는 단어·어구를 듣고 뜻 고르기, 질문을 듣고 대답 고르기(다시 듣기·천천히 듣기). 읽기는 질문-대답 잇기, 단어-뜻 잇기, 문답 순서 맞추기. 결과는 기기에 쌓고, 디자인은 AI 기본값에서 벗어나게(차분한 2색+회색, 왼쪽 정렬, 큰 글씨·큰 버튼).
+
+- 파일을 나눔: `css/style.css`, `js/app.js`(주소 #/ 로 화면 전환), `js/data.js`, `js/speech.js`, `js/store.js`, `js/ui.js`, `js/activities/listen.js`·`read.js`·`result.js`
+- 문항은 `units.json`의 핵심 표현(의사소통 기능, 주요 표현 연습, 신출 어휘, 단원 어구)만으로 그때그때 만듦. 교과서 대화문·읽기 글은 쓰지 않음
+- 각 문항 결과(unit, skill, level, itemId, correct, answer, 시각, 학급 코드, 번호)를 `localStorage`의 `er5.attempts`에 쌓음. `sent:false`는 나중에 Supabase로 보낼 표시
+- 화면을 headless Edge로 직접 눌러 보며 확인하는 도구 `tools/capture.mjs`를 만듦(콘솔 오류도 검사)
+- 확인하다 고친 것
+  - 9단원에서 "안경"과 "유리, 안경(glasses)"이 한 문제의 보기로 함께 나와 정답이 둘처럼 보임 → 철자나 뜻이 겹치는 단어는 같은 문제에 넣지 않게 함
+  - "How much are the glasses?"의 오답 보기로 다른 가격 대답이 나오면 헷갈림 → 같은 종류의 질문 대답은 오답 보기에서 뺌
+  - 화면에 "null", "[object HTMLUListElement]" 글자가 보임 → 화면 그리는 도우미(`mount`)가 빈 값과 목록을 걸러 넣게 고침
+- 전/후 화면: `screenshots/02-student-flow-before*.png` → `02-student-flow-after*.png`(입장, 단원 목록, 단원, 듣기, 읽기, 결과, 음성 미지원)
