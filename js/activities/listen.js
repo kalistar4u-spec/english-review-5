@@ -1,12 +1,13 @@
 // 듣기 활동
 // 1) 단어·어구를 듣고 뜻 고르기  2) 질문을 듣고 알맞은 대답 고르기
 import { vocab, qaPairs, kindOf, slug, pickDistinct } from '../data.js';
-import { canSpeak, hasEnglishVoice, speak, stopSpeaking } from '../speech.js';
+import { canSpeak, hasEnglishVoice, speak, stopSpeaking, voiceInfo } from '../speech.js';
 import { h, mount, shuffle, sample, progress } from '../ui.js';
 import { renderResult } from './result.js';
 
 const MEANING_COUNT = 5;
 const ANSWER_COUNT = 3;
+let runId = 0; // 가장 최근에 시작한 듣기만 화면과 소리를 냄
 
 // 질문이 서로 다른 짝을 먼저 고름 (같은 질문만 반복되지 않게)
 function pickVariedPairs(pairs, n) {
@@ -59,14 +60,17 @@ export function buildItems(unit, units) {
 }
 
 export async function run(root, { unit, units, record, onBack }) {
+  const id = ++runId;
   const items = buildItems(unit, units);
   const speakable = canSpeak();
   const voiceOk = speakable ? await hasEnglishVoice() : false;
+  const voiceName = speakable ? await voiceInfo() : '';
   const results = [];
   let saveFailed = false;
   let index = 0;
 
   const showItem = () => {
+    if (id !== runId) return; // 더 새로 시작한 듣기가 있으면 이 화면은 그리지 않음
     const item = items[index];
     const isMeaning = item.type === 'meaning';
     let answered = false;
@@ -134,11 +138,13 @@ export async function run(root, { unit, units, record, onBack }) {
       h('div', { class: 'choices' }, choiceBtns),
       feedback,
       h('div', { class: 'btn-row' }, nextBtn),
+      speakable ? h('p', { class: 'voice-name muted', text: `목소리: ${voiceName}` }) : null,
     );
     if (speakable) speak(item.say);
   };
 
   const finish = () => {
+    if (id !== runId) return;
     stopSpeaking();
     renderResult(root, {
       title: `${unit.unit}단원 듣기`,

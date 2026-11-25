@@ -268,3 +268,4 @@ p { margin: 0 0 16px; }
   .shown-text { font-size: 26px; }
   .choice { font-size: 21px; }
 }
+.voice-name { margin-top: 32px; font-size: 15px; }

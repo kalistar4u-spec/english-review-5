@@ -1,0 +1,11 @@
+{
+  "base": "http://127.0.0.1:5173/",
+  "out": "screenshots",
+  "shots": [
+    { "name": "03-voice-NAME", "width": 1280, "height": 800, "hash": "#/unit/7/listen", "fullPage": true,
+      "setup": ["localStorage.clear(); localStorage.setItem('er5.student', JSON.stringify({classCode:'5A3K',studentNo:1}))"],
+      "steps": ["new Promise(r=>setTimeout(r,1800)).then(()=>(document.querySelector('.voice-name')||{}).textContent||'목소리 표시 없음')"] },
+    { "name": "03-voice-NAME-mobile", "width": 390, "height": 844, "hash": "#/unit/7/listen", "fullPage": true,
+      "steps": ["(async()=>{await new Promise(r=>setTimeout(r,1800));const w=()=>new Promise(r=>setTimeout(r,120));for(let i=0;i<8;i++){document.querySelectorAll('.choice')[0].click();await w();[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/다음 문제|결과 보기/.test(b.textContent)).click();await w();}return document.querySelector('.score').textContent})()"] }
+  ]
+}
