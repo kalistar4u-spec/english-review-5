@@ -52,3 +52,14 @@
 - 점검: 듣기 8문제마다 실제로 읽은 문장과 화면 문제를 대조 → 8/8 일치, 화면을 빠르게 오가도 문제 화면 1개
 - 남은 고민: 브라우저 목소리는 기기마다 달라 발음 품질을 보장할 수 없음 → 미리 만든 원어민 수준 음성 파일로 바꿀지 사용자와 정하기로 함
 - 전/후 화면: `screenshots/03-voice-before*.png` → `03-voice-after*.png`
+
+## 2026-11-25 — 원어민 음성 파일로 바꾸기
+
+> 발음이 너무 않좋아...
+
+- AI가 낸 선택지: edge-tts로 바로 만들기 / 공식 TTS(Google·Azure) 키로 만들기 / 선생님이 직접 녹음 → **edge-tts** 선택
+- `tools/make_audio.py`: units.json의 핵심 표현 148문장을 en-US-JennyNeural로 `audio/*.mp3`(보통)와 `audio/slow/*.mp3`(-35%)로 만들고 `audio/index.json`에 문장→파일 표를 둠(약 4.9MB)
+- `js/speech.js`: 파일을 먼저 틀고, 없는 문장이나 재생 실패 때만 브라우저 목소리. 듣기 화면 아래에 "목소리: 원어민 음성 파일 (Jenny, 미국 영어)" 표시
+- 점검: 듣기 8문제 모두 화면 문제와 같은 파일 재생, 148문장 파일 누락 0
+- 참고: edge-tts는 Microsoft Edge 소리 내어 읽기 서비스를 쓰는 비공식 도구
+- 전/후 화면: `screenshots/04-audio-before*.png` → `04-audio-after*.png`
