@@ -128,6 +128,7 @@ export async function speak(text, { slow = false } = {}) {
 
 function stopNow() {
   if (player && !player.paused) { player.pause(); player.currentTime = 0; }
+  if (mine && !mine.paused) { mine.pause(); mine.currentTime = 0; }
   if (canSynth() && (synth.speaking || synth.pending)) synth.cancel();
 }
 
@@ -143,4 +144,27 @@ export async function voiceInfo() {
   if (audioIndex && player) return `원어민 음성 파일 (${audioVoice.replace(/^en-US-|Neural$/g, '')}, 미국 영어)`;
   await loadVoices();
   return voice ? `${voice.name} (${voice.lang}${voice.localService ? ', 기기' : ', 온라인'})` : '영어 목소리 없음';
+}
+
+// 녹음한 내 목소리(blob 주소) 틀기. 끝나면 true
+const mine = typeof Audio === 'function' ? new Audio() : null;
+export function playRecording(url) {
+  if (!mine || !url) return Promise.resolve(false);
+  stopSpeaking();
+  const my = seq;
+  return new Promise((resolve) => {
+    mine.onended = () => resolve(true);
+    mine.onerror = () => resolve(false);
+    mine.src = url;
+    if (my !== seq) { resolve(false); return; }
+    mine.play().catch(() => resolve(false));
+  });
+}
+export function stopRecording() {
+  if (mine && !mine.paused) { mine.pause(); mine.currentTime = 0; }
+}
+
+// 녹음 가능 여부 (https 또는 localhost에서만 마이크를 쓸 수 있음)
+export function canRecord() {
+  return !!(navigator.mediaDevices?.getUserMedia && typeof window.MediaRecorder === 'function');
 }

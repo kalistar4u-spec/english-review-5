@@ -3,6 +3,15 @@ import { h, mount } from '../ui.js';
 
 // results: [{ correct, label, right, mine }]
 export function renderResult(root, { title, results, saveFailed, onRetry, onBack }) {
+  if (!results.length) {
+    mount(root,
+      h('h1', { text: `${title} 끝` }),
+      h('div', { class: 'notice' }, h('p', { text: '이번에는 푼 문제가 없어요. 건너뛴 문제는 기록하지 않아요.' })),
+      h('div', { class: 'btn-row' },
+        h('button', { class: 'btn', type: 'button', onclick: onRetry, text: '다시 해 보기' }),
+        h('button', { class: 'btn btn-line', type: 'button', onclick: onBack, text: '다른 활동 고르기' })));
+    return;
+  }
   const right = results.filter((r) => r.correct).length;
   const wrong = results.filter((r) => !r.correct);
   mount(root, 

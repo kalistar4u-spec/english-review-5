@@ -20,6 +20,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const edge = spawn(EDGE, [
   '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-first-run',
+  '--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', '--autoplay-policy=no-user-gesture-required',
   `--remote-debugging-port=${PORT}`, `--user-data-dir=${profile}`, 'about:blank',
 ], { stdio: 'ignore' });
 
