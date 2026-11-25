@@ -145,7 +145,7 @@ function viewUnit(unit) {
   const mine = myAttempts().filter((a) => a.unit === unit.unit);
   const keys = (unit.functions || []).filter((f) => f.q || (f.a && f.a.length));
   mount(app, 
-    h('a', { class: 'back', href: '#/units', text: '← 단원 목록' }),
+    h('a', { class: 'back', href: '#/units' }, h('span', { class: 'arrow', 'aria-hidden': 'true', text: '←' }), '단원 목록으로'),
     h('h1', {}, `${unit.unit}단원 `, h('span', { class: 'en', lang: 'en', text: unit.title })),
     h('p', { class: 'lead', text: unit.topic }),
     keys.length

@@ -314,7 +314,7 @@ export function run(root, ctx) {
     const [ptext, pbar] = progress(index + 1, items.length, '말하기');
     mount(root,
       h('div', { class: 'act-head' },
-        h('button', { class: 'link-btn back', type: 'button', text: '← 그만하기', onclick: () => { cleanup(); onBack(); } }),
+        h('button', { class: 'link-btn back', type: 'button', onclick: () => { cleanup(); onBack(); } }, h('span', { class: 'arrow', 'aria-hidden': 'true', text: '←' }), '그만하고 나가기'),
         ptext),
       pbar,
       h('p', { class: 'ask' }, hideText ? '잘 듣고 문장 전체를 따라 말해 보세요.' : '원어민 소리를 듣고 따라 말해 보세요.',

@@ -236,7 +236,7 @@ export function run(root, { unit, units, record, onBack }) {
 
     mount(root, 
       h('div', { class: 'act-head' },
-        h('button', { class: 'link-btn back', type: 'button', text: '← 그만하기', onclick: () => { stopSpeaking(); onBack(); } }),
+        h('button', { class: 'link-btn back', type: 'button', onclick: () => { stopSpeaking(); onBack(); } }, h('span', { class: 'arrow', 'aria-hidden': 'true', text: '←' }), '그만하고 나가기'),
         ptext),
       pbar,
       h('p', { class: 'ask', text: step.ask }),

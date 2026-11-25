@@ -144,7 +144,7 @@ export function run(root, ctx) {
     const [ptext, pbar] = progress(index + 1, items.length, '진단');
     mount(root,
       h('div', { class: 'act-head' },
-        h('button', { class: 'link-btn back', type: 'button', text: '← 그만하기', onclick: () => { stopSpeaking(); onBack(); } }),
+        h('button', { class: 'link-btn back', type: 'button', onclick: () => { stopSpeaking(); onBack(); } }, h('span', { class: 'arrow', 'aria-hidden': 'true', text: '←' }), '그만하고 나가기'),
         ptext),
       pbar,
       h('p', { class: 'ask' }, item.ask, h('span', { class: 'stage-tag', text: { listen: '듣기', read: '읽기', write: '쓰기' }[item.skill] })),

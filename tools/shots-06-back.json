@@ -1,0 +1,10 @@
+{
+  "base": "http://127.0.0.1:5173/",
+  "out": "screenshots",
+  "shots": [
+    { "name": "06-back-NAME", "width": 1280, "height": 800, "hash": "#/unit/7",
+      "setup": ["localStorage.clear(); localStorage.setItem('er5.student', JSON.stringify({classCode:'5A3K',studentNo:1}))"] },
+    { "name": "06-back-NAME-mobile", "width": 390, "height": 844, "hash": "#/unit/7" },
+    { "name": "06-back-NAME-activity-mobile", "width": 390, "height": 844, "hash": "#/unit/7/read" }
+  ]
+}
