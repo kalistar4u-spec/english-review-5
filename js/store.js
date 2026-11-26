@@ -96,3 +96,22 @@ export function setStage(unit, stage, { from = 'self', score = null } = {}, stud
   all[key][unit] = { stage, from, score, at: new Date().toISOString() };
   return write(STAGES_KEY, all);
 }
+
+// 스스로 평가(활동이 끝날 때 알아요/조금/어려워요)
+// er5.reflections : [{ classCode, studentNo, unit, skill, rating: 'know'|'some'|'hard', score, total, at, sent }]
+const REFLECT_KEY = 'er5.reflections';
+
+export function getReflections(student = getStudent()) {
+  const list = read(REFLECT_KEY, []);
+  if (!Array.isArray(list) || !student) return [];
+  return list.filter((r) => r.classCode === student.classCode && r.studentNo === student.studentNo);
+}
+
+export function saveReflection({ unit, skill, rating, score, total }) {
+  const student = getStudent();
+  if (!student) return false;
+  const list = read(REFLECT_KEY, []);
+  const all = Array.isArray(list) ? list : [];
+  all.push({ classCode: student.classCode, studentNo: student.studentNo, unit, skill, rating, score, total, at: new Date().toISOString(), sent: false });
+  return write(REFLECT_KEY, all);
+}

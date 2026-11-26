@@ -1,0 +1,226 @@
+{
+ "student": {
+  "classCode": "5A3K",
+  "studentNo": 1
+ },
+ "attempts": [
+  {
+   "unit": 7,
+   "skill": "listen",
+   "level": "core",
+   "itemId": "u7-listen-meaning-grape",
+   "correct": true,
+   "answer": "포도",
+   "selfRating": null,
+   "at": "2026-11-26T01:10:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "listen",
+   "level": "core",
+   "itemId": "u7-listen-meaning-festival",
+   "correct": true,
+   "answer": "축제",
+   "selfRating": null,
+   "at": "2026-11-26T01:11:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "listen",
+   "level": "core",
+   "itemId": "u7-listen-answer-what-did-you-do-this-summer-i-swam-in-the-sea",
+   "correct": true,
+   "answer": "I swam in the sea.",
+   "selfRating": null,
+   "at": "2026-11-26T01:12:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "listen",
+   "level": "core",
+   "itemId": "u7-listen-meaning-weekend",
+   "correct": false,
+   "answer": "바다",
+   "selfRating": null,
+   "at": "2026-11-26T01:13:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "read",
+   "level": "core",
+   "itemId": "u7-read-meaning-watermelon",
+   "correct": true,
+   "answer": "수박",
+   "selfRating": null,
+   "at": "2026-11-26T01:14:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "read",
+   "level": "core",
+   "itemId": "u7-read-qa-how-was-your-weekend-it-was-great",
+   "correct": true,
+   "answer": "It was great.",
+   "selfRating": null,
+   "at": "2026-11-26T01:15:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "read",
+   "level": "core",
+   "itemId": "u7-read-order-what-did-you-do-this-summer-i-visited-my-grandma",
+   "correct": false,
+   "answer": "I visited my grandma. / What did you do this summer?",
+   "selfRating": null,
+   "at": "2026-11-26T02:16:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "speak",
+   "level": "core",
+   "itemId": "u7-speak-we-had-a-great-time",
+   "correct": true,
+   "answer": "",
+   "selfRating": null,
+   "at": "2026-11-26T02:17:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "speak",
+   "level": "core",
+   "itemId": "u7-speak-festival",
+   "correct": true,
+   "answer": "",
+   "selfRating": null,
+   "at": "2026-11-26T02:18:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "write",
+   "level": "core",
+   "itemId": "u7-write-spell-watermelon",
+   "correct": false,
+   "answer": "wotermelon",
+   "selfRating": null,
+   "at": "2026-11-26T02:19:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "write",
+   "level": "core",
+   "itemId": "u7-write-spell-family",
+   "correct": true,
+   "answer": "family",
+   "selfRating": null,
+   "at": "2026-11-26T02:20:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "write",
+   "level": "core",
+   "itemId": "u7-write-order-i-went-to-a-festival",
+   "correct": false,
+   "answer": "I went a to festival.",
+   "selfRating": null,
+   "at": "2026-11-26T02:21:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 7,
+   "skill": "write",
+   "level": "core",
+   "itemId": "u7-write-order-we-had-a-great-time",
+   "correct": false,
+   "answer": "We a had great time.",
+   "selfRating": null,
+   "at": "2026-11-26T03:22:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 8,
+   "skill": "listen",
+   "level": "core",
+   "itemId": "u8-listen-meaning-beef",
+   "correct": true,
+   "answer": "소고기",
+   "selfRating": null,
+   "at": "2026-11-26T03:23:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 8,
+   "skill": "listen",
+   "level": "core",
+   "itemId": "u8-listen-answer-do-you-want-some-more-no-thanks",
+   "correct": false,
+   "answer": "Yes, please.",
+   "selfRating": null,
+   "at": "2026-11-26T03:24:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  },
+  {
+   "unit": 8,
+   "skill": "write",
+   "level": "core",
+   "itemId": "u8-write-spell-fruit",
+   "correct": false,
+   "answer": "friut",
+   "selfRating": null,
+   "at": "2026-11-26T03:25:00.000Z",
+   "classCode": "5A3K",
+   "studentNo": 1,
+   "sent": false
+  }
+ ],
+ "stages": {
+  "5A3K-1": {
+   "7": {
+    "stage": "core",
+    "from": "diagnose",
+    "score": 3,
+    "at": "2026-11-26T01:00:00.000Z"
+   }
+  }
+ }
+}

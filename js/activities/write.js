@@ -98,7 +98,7 @@ export function cardBuilder({ tokens, extra = [], lockFirst = false, end = '.', 
 }
 
 // 철자 빈칸: 글자 조각 누르기
-function spellTiles(item, stage, onChange) {
+export function spellTiles(item, stage, onChange) {
   const blanks = blankPositions(item.en, stage);
   const answer = [...blanks].sort((a, b) => a - b).map((i) => item.en[i].toLowerCase());
   const extra = stage === 'core' ? sample([...'aeioutsnrlmdkc'].filter((c) => !answer.includes(c)), 2) : [];

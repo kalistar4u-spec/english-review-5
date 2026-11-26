@@ -1,0 +1,147 @@
+{
+ "base": "http://127.0.0.1:5173/",
+ "out": "screenshots",
+ "shots": [
+  {
+   "name": "07-feedback-NAME-empty",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/units",
+   "fullPage": true,
+   "setup": [
+    "localStorage.clear(); localStorage.setItem('er5.student', JSON.stringify({classCode:'5A3K',studentNo:1}))"
+   ]
+  },
+  {
+   "name": "07-feedback-NAME",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/units",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ]
+  },
+  {
+   "name": "07-feedback-NAME-mobile",
+   "width": 390,
+   "height": 844,
+   "hash": "#/units",
+   "fullPage": true
+  },
+  {
+   "name": "07-feedback-NAME-result",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/unit/7/write",
+   "fullPage": true,
+   "steps": [
+    "(async()=>{const w=(t=150)=>new Promise(r=>setTimeout(r,t));await w(800);for(let i=0;i<5;i++){const tiles=[...document.querySelectorAll('.tile, .card-pool .wcard')];for(const t of tiles.slice().reverse()){t.click();await w(60);} for(let k=0;k<20;k++){const p=document.querySelector('.tile, .card-pool .wcard');if(!p)break;p.click();await w(40);} const inp=document.querySelector('.type-in');if(inp){inp.value='abc';inp.dispatchEvent(new Event('input'));} [...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/확인하기/.test(b.textContent))?.click();await w();[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/다음 문제|결과 보기/.test(b.textContent))?.click();await w(300);}return document.querySelector('h1')?.textContent})()",
+    "(()=>{[...document.querySelectorAll('.rate-btn')].find(b=>/어려워요/.test(b.textContent))?.click();return document.querySelector('.self-check .notice')?.textContent})()"
+   ]
+  },
+  {
+   "name": "07-feedback-NAME-result-mobile",
+   "width": 390,
+   "height": 844,
+   "hash": "#/unit/8/listen",
+   "fullPage": true,
+   "steps": [
+    "(async()=>{const w=(t=150)=>new Promise(r=>setTimeout(r,t));await w(1800);for(let i=0;i<8;i++){document.querySelectorAll('.choice')[i%2].click();await w();[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/다음 문제|결과 보기/.test(b.textContent)).click();await w();}return document.querySelector('h1')?.textContent})()",
+    "(()=>{document.querySelectorAll('.rate-btn')[1]?.click();return [...document.querySelectorAll('.adv li')].map(x=>x.textContent)})()"
+   ]
+  },
+  {
+   "name": "07-feedback-after-notes",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/notes",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ]
+  },
+  {
+   "name": "07-feedback-after-notes-mobile",
+   "width": 390,
+   "height": 844,
+   "hash": "#/notes",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ]
+  },
+  {
+   "name": "07-feedback-after-fix-write",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/fix/easy/7/write",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ],
+   "steps": [
+    "new Promise(r=>setTimeout(r,600)).then(()=>[document.querySelector('.ask')?.textContent,document.querySelector('.hint-box')?.textContent])"
+   ]
+  },
+  {
+   "name": "07-feedback-after-fix-write2",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/fix/easy/7/write",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ],
+   "steps": [
+    "(async()=>{const w=(t=200)=>new Promise(r=>setTimeout(r,t));await w(600);for(let k=0;k<6;k++){const t=document.querySelector('.tile');if(!t)break;t.click();await w(60);}[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/확인하기/.test(b.textContent))?.click();await w();[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/다음 문제/.test(b.textContent))?.click();await w(400);return [document.querySelector('.ask')?.textContent,document.querySelector('.hint-box')?.textContent,document.querySelector('.build-line')?.textContent]})()"
+   ]
+  },
+  {
+   "name": "07-feedback-after-fix-listen-mobile",
+   "width": 390,
+   "height": 844,
+   "hash": "#/fix/easy/8/listen",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ],
+   "steps": [
+    "new Promise(r=>setTimeout(r,800)).then(()=>[document.querySelector('.ask')?.textContent,document.querySelector('.hint-box')?.textContent,[...document.querySelectorAll('.choice')].map(b=>b.textContent)])"
+   ]
+  },
+  {
+   "name": "07-feedback-after-fix-done",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/fix/easy/7/read",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ],
+   "steps": [
+    "(async()=>{const w=(t=200)=>new Promise(r=>setTimeout(r,t));const out=[];for(let i=0;i<10;i++){await w(300);const h=document.querySelector('.hint-box')?.textContent;if(h)out.push(h);const pool=[...document.querySelectorAll('.choices .choice')];if(document.querySelector('.slots')){const q=pool.find(b=>/\\?$/.test(b.textContent.trim()));q?.click();await w();document.querySelector('.choices .choice')?.click();await w();[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/확인하기/.test(b.textContent))?.click();}else if(pool.length){pool[0].click();}await w();const nx=[...document.querySelectorAll('.btn')].find(b=>!b.hidden&&/다음 문제|결과 보기/.test(b.textContent));if(!nx)break;nx.click();}return out.concat(document.querySelector('h1')?.textContent)})()"
+   ]
+  },
+  {
+   "name": "07-feedback-after-notes-empty",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/notes",
+   "fullPage": true,
+   "setup": [
+    "localStorage.clear(); localStorage.setItem('er5.student', JSON.stringify({classCode:'5A3K',studentNo:1}))"
+   ]
+  },
+  {
+   "name": "07-feedback-after-unit",
+   "width": 1280,
+   "height": 800,
+   "hash": "#/unit/7",
+   "fullPage": true,
+   "setup": [
+    "fetch('tools/seed-feedback.json').then(r=>r.json()).then(j=>{localStorage.clear();localStorage.setItem('er5.student',JSON.stringify(j.student));localStorage.setItem('er5.attempts',JSON.stringify(j.attempts));localStorage.setItem('er5.stages',JSON.stringify(j.stages));})"
+   ]
+  }
+ ]
+}

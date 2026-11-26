@@ -5,6 +5,9 @@
 //   #/unit/7      단원 화면(영역 고르기)
 //   #/unit/7/listen, read, speak, write   활동
 //   #/unit/7/diagnose                    진단 5문항 → 단계 추천
+//   #/notes                              오답 노트(단원·영역별)
+//   #/fix/easy/7/write                   보충 학습(한 단계 쉬운 문제+힌트)
+//   #/fix/retry/7/write                  오답 노트 다시 풀기
 import { loadUnits, findUnit } from './data.js';
 import { canSpeak, canRecognize, stopSpeaking } from './speech.js';
 import { getStudent, saveStudent, myAttempts, addAttempt, summarize, getStage, setStage } from './store.js';
@@ -15,6 +18,8 @@ import * as read from './activities/read.js';
 import * as speakAct from './activities/speak.js';
 import * as write from './activities/write.js';
 import * as diagnose from './activities/diagnose.js';
+import * as remedial from './activities/remedial.js';
+import { beginActivity, track, todayPlan, wrongNotes, groupNotes, itemLabel, skillBars, SKILL_NAMES } from './feedback.js';
 
 const app = document.getElementById('app');
 const who = document.getElementById('who');
@@ -118,12 +123,9 @@ function viewEnter() {
 function viewUnits(units) {
   setTitle('단원 고르기');
   const mine = myAttempts();
-  const empty = mine.length === 0;
-  mount(app, 
-    h('h1', { text: '복습할 단원을 고르세요' }),
-    h('p', { class: 'lead', text: empty
-      ? '아직 푼 문제가 없어요. 단원을 하나 골라 시작해 보세요.'
-      : `지금까지 ${mine.length}문제를 풀었어요.` }),
+  mount(app,
+    todayBox(mine, units),
+    h('h2', { class: 'units-h', text: '복습할 단원을 고르세요' }),
     h('ul', { class: 'rows' },
       units.map((u) => {
         const s = summarize(mine.filter((a) => a.unit === u.unit));
@@ -137,6 +139,139 @@ function viewUnits(units) {
           ));
       })),
   );
+}
+
+/* 오늘 할 일: 이어서 하기, 가장 약한 영역·단원, 오답 노트 */
+function todayBox(mine, units) {
+  const plan = todayPlan(mine, units);
+  if (plan.empty) {
+    const u = plan.first;
+    return h('section', { class: 'today' },
+      h('h1', { text: '오늘 할 일' }),
+      h('div', { class: 'notice' },
+        h('p', {}, h('strong', { text: '아직 푼 문제가 없어요.' })),
+        h('p', { text: '문제를 풀면 여기에 영역별 정답률, 가장 약한 영역, 다시 풀 문제가 나타나요. 처음이면 단원에 들어가 진단 5문제로 내 단계를 정해 보세요.' })),
+      h('div', { class: 'btn-row' },
+        h('a', { class: 'btn', href: `#/unit/${u.unit}` }, `${u.unit}단원부터 시작하기`)));
+  }
+  const { notes } = wrongNotes(mine, units);
+  const todo = [];
+  if (plan.next) {
+    const { unit: u, skill } = plan.next;
+    todo.push({
+      label: '이어서 하기',
+      text: skill
+        ? `지난번에 ${plan.last.unit.unit}단원 ${SKILL_NAMES[plan.last.skill]}를 했어요. 이어서 ${u.unit}단원 ${SKILL_NAMES[skill]}를 해 보세요.`
+        : `${plan.last.unit.unit}단원 네 영역을 모두 했어요. 다음은 ${u.unit}단원이에요.`,
+      href: skill ? `#/unit/${u.unit}/${skill}` : `#/unit/${u.unit}`,
+      btn: skill ? `${u.unit}단원 ${SKILL_NAMES[skill]} 하기` : `${u.unit}단원 열기`,
+    });
+  }
+  if (plan.weakSkill && plan.weakUnit) {
+    const s = plan.overall[plan.weakSkill];
+    const wu = plan.weakUnit;
+    const has = notes.some((n) => n.unit === wu.unit.unit && n.skill === plan.weakSkill);
+    todo.push({
+      label: '가장 약한 곳',
+      text: `가장 약한 영역은 ${SKILL_NAMES[plan.weakSkill]}(${s.pct}%)예요. 그중 ${wu.unit.unit}단원이 ${wu.pct}%로 가장 낮아요.`,
+      href: has ? `#/fix/easy/${wu.unit.unit}/${plan.weakSkill}` : `#/unit/${wu.unit.unit}/${plan.weakSkill}`,
+      btn: has ? `${wu.unit.unit}단원 ${SKILL_NAMES[plan.weakSkill]} 보충 학습` : `${wu.unit.unit}단원 ${SKILL_NAMES[plan.weakSkill]} 다시 하기`,
+      warn: true,
+    });
+  } else {
+    todo.push({ label: '가장 약한 곳', text: '80%보다 낮은 영역이 없어요. 아직 안 한 단원이나 도전 단계를 해 보세요.' });
+  }
+  todo.push(notes.length
+    ? { label: '오답 노트', text: `다시 풀 문제가 ${notes.length}개 있어요.`, href: '#/notes', btn: '오답 노트 보기' }
+    : { label: '오답 노트', text: '지금은 다시 풀 문제가 없어요.', href: '#/notes', btn: '오답 노트 보기', line: true });
+
+  return h('section', { class: 'today' },
+    h('h1', { text: '오늘 할 일' }),
+    h('ol', { class: 'todo' }, todo.map((t, i) => h('li', { class: t.warn ? 'warn' : '' },
+      h('span', { class: 'todo-n', text: String(i + 1) }),
+      h('div', { class: 'todo-body' },
+        h('span', { class: 'todo-label', text: t.label }),
+        h('p', { text: t.text })),
+      t.href ? h('a', { class: 'btn' + (i === 0 ? '' : ' btn-line'), href: t.href, text: t.btn }) : null))),
+    h('h2', { text: '영역별 정답률 (모든 단원)' }),
+    skillBars(plan.overall, { caption: '모든 단원 영역별 정답률' }),
+    h('p', { class: 'muted small', text: `지금까지 ${mine.filter((a) => a.skill in SKILL_NAMES && a.level !== 'remedial').length}문제를 풀었어요. 진단과 보충 학습 문제는 정답률에 넣지 않아요.` }));
+}
+
+/* 오답 노트 */
+function viewNotes(units) {
+  setTitle('오답 노트');
+  const mine = myAttempts();
+  const { notes, fixed } = wrongNotes(mine, units);
+  const head = [
+    h('a', { class: 'back', href: '#/units' }, h('span', { class: 'arrow', 'aria-hidden': 'true', text: '←' }), '단원 목록으로'),
+    h('h1', { text: '오답 노트' }),
+    h('p', { class: 'lead', text: '틀린 문제를 단원·영역별로 모았어요. "다시 풀기"로 맞히면 노트에서 빠져요. 어려우면 "보충 학습"으로 쉬운 문제와 힌트부터 풀어요.' }),
+  ];
+  if (!mine.some((a) => a.skill in SKILL_NAMES)) {
+    mount(app, head, h('div', { class: 'notice' },
+      h('p', {}, h('strong', { text: '아직 푼 문제가 없어요.' })),
+      h('p', { text: '단원을 골라 듣기·말하기·읽기·쓰기를 풀면 틀린 문제가 여기에 모여요.' })),
+    h('a', { class: 'btn', href: '#/units', text: '단원 고르기' }));
+    return;
+  }
+  if (!notes.length) {
+    mount(app, head, h('div', { class: 'notice' },
+      h('p', {}, h('strong', { text: '지금은 틀린 문제가 없어요.' })),
+      h('p', { text: fixed ? `다시 풀어서 고친 문제가 ${fixed}개 있어요. 잘했어요.` : '푼 문제를 모두 맞혔어요. 다른 단원도 해 보세요.' })),
+    h('a', { class: 'btn', href: '#/units', text: '단원 고르기' }));
+    return;
+  }
+  const groups = groupNotes(notes);
+  const byUnit = new Map();
+  for (const g of groups) {
+    if (!byUnit.has(g.unit)) byUnit.set(g.unit, []);
+    byUnit.get(g.unit).push(g);
+  }
+  mount(app, head,
+    h('p', { class: 'note-sum' }, h('strong', { text: `다시 풀 문제 ${notes.length}개` }), fixed ? ` · 고친 문제 ${fixed}개` : ''),
+    [...byUnit].map(([unitNo, gs]) => {
+      const u = findUnit(units, unitNo);
+      return h('section', { class: 'note-unit' },
+        h('h2', {}, `${unitNo}단원 `, h('span', { class: 'en muted', lang: 'en', text: u?.title || '' })),
+        gs.map((g) => h('div', { class: 'note-group' },
+          h('div', { class: 'note-head' },
+            h('h3', { text: `${SKILL_NAMES[g.skill]} · ${g.items.length}문제` }),
+            h('div', { class: 'note-btns' },
+              h('a', { class: 'btn', href: `#/fix/easy/${g.unit}/${g.skill}`, text: '보충 학습' }),
+              h('a', { class: 'btn btn-line', href: `#/fix/retry/${g.unit}/${g.skill}`, text: '다시 풀기' }))),
+          h('ul', { class: 'review' }, g.items.map((n) => {
+            const l = itemLabel(n);
+            return h('li', {},
+              h('span', { class: 'en', lang: 'en', text: l.main }),
+              l.sub ? h('span', { text: ` ${l.sub}` }) : null,
+              n.mine ? h('span', { class: 'mine', text: `내 답: ${n.mine}` }) : null,
+              n.wrongTimes > 1 || n.easyDone
+                ? h('span', { class: 'note-tags' },
+                    n.wrongTimes > 1 ? h('span', { class: 'tag-mini', text: `${n.wrongTimes}번 틀림` }) : null,
+                    n.easyDone ? h('span', { class: 'tag-mini ok', text: '보충 학습 맞힘 · 다시 풀기로 확인' }) : null)
+                : null);
+          })))));
+    }));
+}
+
+/* 보충 학습 / 다시 풀기 */
+function viewFix(units, mode, unit, skill) {
+  if (!['easy', 'retry'].includes(mode) || !(skill in SKILL_NAMES)) { go('#/notes'); return; }
+  setTitle(`${unit.unit}단원 ${SKILL_NAMES[skill]} ${mode === 'easy' ? '보충 학습' : '다시 풀기'}`);
+  const { notes } = wrongNotes(myAttempts(), units);
+  let warned = false;
+  const record = (attempt) => {
+    const ok = addAttempt(attempt);
+    if (!ok && !warned) { warned = true; toast('기록을 저장하지 못했어요. 계속 풀 수는 있어요.'); }
+    return ok;
+  };
+  remedial.run(app, {
+    mode, unit, skill, units, notes, record,
+    onBack: () => go(`#/unit/${unit.unit}`),
+    onAgain: (m) => go(`#/fix/${m}/${unit.unit}/${skill}`),
+    onChallenge: () => go(`#/unit/${unit.unit}/${skill}`),
+  });
 }
 
 /* 단원 화면: 영역 고르기 */
@@ -174,8 +309,19 @@ function viewUnit(unit) {
           h('span', { class: 'desc', text: sk.desc }),
           h('span', { class: 'stat', text: stat }));
       })),
+    unitNotes(unit),
     canRecognize() ? null : h('p', { class: 'muted', text: '이 브라우저는 음성 인식이 되지 않아요. 말하기는 녹음한 내 목소리와 원어민 소리를 번갈아 듣고 스스로 평가해요.' }),
   );
+}
+
+// 단원 화면 아래: 이 단원에서 다시 풀 문제
+function unitNotes(unit) {
+  const units = [unit];
+  const { notes } = wrongNotes(myAttempts().filter((a) => a.unit === unit.unit), units);
+  if (!notes.length) return null;
+  return h('div', { class: 'notice notice-warn unit-notes' },
+    h('p', { text: `이 단원에서 다시 풀 문제가 ${notes.length}개 있어요. 보충 학습으로 쉬운 문제와 힌트부터 풀어 보세요.` }),
+    h('a', { class: 'btn btn-line', href: '#/notes', text: '오답 노트 보기' }));
 }
 
 /* 단계: 진단 전이면 진단 안내, 정했으면 지금 단계와 바꾸기 버튼 */
@@ -210,9 +356,12 @@ function viewActivity(unit, units, key) {
   setTitle(`${unit.unit}단원 ${sk.name}`);
   const stage = getStage(unit.unit)?.stage || 'core';
   let warned = false;
+  if (!isDiag) beginActivity({ unit: unit.unit, skill: key, stage });
   // 기록의 level 은 그때 학생의 단계 (진단은 'diagnose')
   const record = (attempt) => {
-    const ok = addAttempt({ ...attempt, level: isDiag ? 'diagnose' : stage });
+    const full = { ...attempt, level: isDiag ? 'diagnose' : stage };
+    if (!isDiag) track(full);
+    const ok = addAttempt(full);
     if (!ok && !warned) { warned = true; toast('기록을 저장하지 못했어요. 계속 풀 수는 있어요.'); }
     return ok;
   };
@@ -251,7 +400,13 @@ async function render() {
     return;
   }
 
-  if (parts[0] === 'unit') {
+  if (parts[0] === 'notes') {
+    viewNotes(units);
+  } else if (parts[0] === 'fix') {
+    const unit = findUnit(units, parts[2]);
+    if (!unit) { go('#/notes'); return; }
+    viewFix(units, parts[1], unit, parts[3]);
+  } else if (parts[0] === 'unit') {
     const unit = findUnit(units, parts[1]);
     if (!unit) { go('#/units'); return; }
     if (parts[2]) viewActivity(unit, units, parts[2]);
